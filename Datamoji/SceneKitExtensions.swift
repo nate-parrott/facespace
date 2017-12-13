@@ -45,3 +45,32 @@ extension SCNNode {
     }
 }
 
+extension SCNBoundingVolume {
+    var scaleToNormalize: Float {
+        get {
+            let dx = boundingBox.max.x - boundingBox.min.x
+            let dy = boundingBox.max.y - boundingBox.min.y
+            let dz = boundingBox.max.z - boundingBox.min.z
+            return min(1.0 / dx, 1.0 / dy, 1.0 / dz)
+        }
+    }
+}
+
+extension SCNMorpher {
+    func applyBlendShapes(_ shapes: [ARFaceAnchor.BlendShapeLocation: NSNumber]) {
+        let blendLocationsToMorphTargets: [ARFaceAnchor.BlendShapeLocation: String] = [
+            .jawOpen: "jawOpen",
+            .eyeBlinkLeft: "eyeBlinkLeft",
+            .eyeBlinkRight: "eyeBlinkRight",
+            .eyeSquintLeft: "eyeSquintLeft",
+            .eyeSquintRight: "eyeSquintRight",
+            .jawForward: "jawForward",
+            .jawLeft: "jawLeft",
+            .jawRight: "jawRight"
+        ]
+        for (blendLoc, morphKey) in blendLocationsToMorphTargets {
+            setWeight(shapes[blendLoc] as! CGFloat, forTargetNamed: morphKey)
+        }
+        setWeight(min(1, (shapes[.jawOpen] as! CGFloat) * 1.5), forTargetNamed: "jawOpen")
+    }
+}

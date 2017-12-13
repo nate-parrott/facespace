@@ -28,7 +28,7 @@ class FaceFilter {
     }
     
     func configureCamera(_ camera: SCNCamera) {
-        
+        camera.colorGrading.contents = nil
     }
     
     func show() {

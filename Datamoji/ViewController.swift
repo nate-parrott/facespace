@@ -56,7 +56,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let faceAnchor = anchor as? ARFaceAnchor {
-            faceFilter = BigSpenderFilter(anchor: faceAnchor, anchorNode: node, sceneNode: sceneView.scene.rootNode, sceneView: sceneView)
+            faceFilter = ToiletFilter(anchor: faceAnchor, anchorNode: node, sceneNode: sceneView.scene.rootNode, sceneView: sceneView)
             faceFilter!.setup()
             faceFilter!.configureCamera(sceneView.pointOfView!.camera!)
             faceFilter!.show()
