@@ -44,7 +44,18 @@ class FaceFilter {
         let name: String
     }
     
-    var info: Info {
+    class var info: Info {
         return Info(emoji: "❓", name: "Filter")
     }
+}
+
+extension FaceFilter {
+    static let all: [FaceFilter.Type] = [
+        BigSpenderFilter.self,
+        DataFilter.self,
+        BubbleFilter.self,
+        BrandmanFilter.self,
+        SkullFilter.self,
+        ToiletFilter.self
+    ]
 }

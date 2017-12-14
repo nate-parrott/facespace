@@ -25,8 +25,41 @@
                                     <outlet property="delegate" destination="BV1-FR-VrT" id="7vy-kd-Adi"/>
                                 </connections>
                             </arscnView>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-8X-2Dp">
+                                <rect key="frame" x="16" y="587" width="343" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Kr-CJ-9YZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHa-oU-oa4" customClass="FilterPicker" customModule="Datamoji" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="IHa-oU-oa4" secondAttribute="bottom" id="5uU-lF-SGi"/>
+                                        <constraint firstItem="IHa-oU-oa4" firstAttribute="top" secondItem="9Kr-CJ-9YZ" secondAttribute="top" id="8zt-ze-zGR"/>
+                                        <constraint firstItem="IHa-oU-oa4" firstAttribute="leading" secondItem="9Kr-CJ-9YZ" secondAttribute="leading" id="enC-Wq-64S"/>
+                                        <constraint firstAttribute="trailing" secondItem="IHa-oU-oa4" secondAttribute="trailing" id="yOb-oy-gYe"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RfP-2O-7t6"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6nc-OV-2cF" firstAttribute="trailing" secondItem="e9D-8X-2Dp" secondAttribute="trailing" constant="16" id="H9K-ji-5w7"/>
+                            <constraint firstItem="6nc-OV-2cF" firstAttribute="bottom" secondItem="e9D-8X-2Dp" secondAttribute="bottom" constant="20" id="PTM-qJ-YgU"/>
+                            <constraint firstItem="e9D-8X-2Dp" firstAttribute="leading" secondItem="6nc-OV-2cF" secondAttribute="leading" constant="16" id="Tp7-eC-SjU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6nc-OV-2cF"/>
                     </view>
                     <connections>

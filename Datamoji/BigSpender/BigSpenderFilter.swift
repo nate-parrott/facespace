@@ -55,7 +55,7 @@ class BigSpenderFilter : FaceFilter {
         glassesNode.opacity = 1
     }
     
-    override var info: Info {
+    override class var info: Info {
         return Info(emoji: "🤑", name: "Big Spender")
     }
 }

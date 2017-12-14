@@ -27,10 +27,18 @@ class SkullFilter : CharacterFilter {
     override func getCharacter() -> Character! {
         return SkullCharacter()
     }
+    
+    override class var info: Info {
+        return Info(emoji: "💀", name: "Skull")
+    }
 }
 
 class ToiletFilter : CharacterFilter {
     override func getCharacter() -> Character! {
         return HqToiletCharacter()
+    }
+    
+    override class var info: Info {
+        return Info(emoji: "🚽", name: "Toilet")
     }
 }

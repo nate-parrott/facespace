@@ -46,7 +46,7 @@ class DataFilter : FaceFilter {
         }
     }
     
-    override var info: Info {
+    override class var info: Info {
         return Info(emoji: "🔢", name: "Data")
     }
 }

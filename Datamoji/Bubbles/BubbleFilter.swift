@@ -134,7 +134,7 @@ class BubbleFilter : FaceFilter {
         super.update(anchor: anchor)
     }
     
-    override var info: Info {
+    override class var info: Info {
         return Info(emoji: "🔵", name: "News Bubble")
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35BDDB031FE22F70004484C1 /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BDDB021FE22F70004484C1 /* FilterPicker.swift */; };
+		35BDDB051FE2404C004484C1 /* FocusPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BDDB041FE2404C004484C1 /* FocusPicker.swift */; };
 		35D310791FDE01920025721A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D310781FDE01920025721A /* AppDelegate.swift */; };
 		35D3107B1FDE01920025721A /* brandman.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D3107A1FDE01920025721A /* brandman.scnassets */; };
 		35D3107D1FDE01920025721A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3107C1FDE01920025721A /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35BDDB021FE22F70004484C1 /* FilterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPicker.swift; sourceTree = "<group>"; };
+		35BDDB041FE2404C004484C1 /* FocusPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusPicker.swift; sourceTree = "<group>"; };
 		35D310751FDE01920025721A /* Datamoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Datamoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D310781FDE01920025721A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35D3107A1FDE01920025721A /* brandman.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = brandman.scnassets; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			children = (
 				35D310781FDE01920025721A /* AppDelegate.swift */,
 				35D3107C1FDE01920025721A /* ViewController.swift */,
+				35BDDB021FE22F70004484C1 /* FilterPicker.swift */,
+				35BDDB041FE2404C004484C1 /* FocusPicker.swift */,
 				35D3113A1FE0CAA10025721A /* Shared resources */,
 				35D311241FE0C1900025721A /* Color grading */,
 				35D311251FE0C1A60025721A /* Face tattoos */,
@@ -300,8 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35D311271FE0C20C0025721A /* BrandmanFilter.swift in Sources */,
+				35BDDB031FE22F70004484C1 /* FilterPicker.swift in Sources */,
 				35D3107D1FDE01920025721A /* ViewController.swift in Sources */,
 				35D311341FE0C62B0025721A /* BigSpenderFilter.swift in Sources */,
+				35BDDB051FE2404C004484C1 /* FocusPicker.swift in Sources */,
 				35D311311FE0C36A0025721A /* BubbleFilter.swift in Sources */,
 				35D310911FDE1A0E0025721A /* ConsoleTextField.swift in Sources */,
 				35D310791FDE01920025721A /* AppDelegate.swift in Sources */,

@@ -40,7 +40,7 @@ class BrandmanFilter : FaceFilter {
         morpher.setWeight(anchor.getBlendShape(.mouthPucker) * 2, forTargetNamed: "mouthPucker")
     }
     
-    override var info: Info {
+    override class var info: Info {
         return Info(emoji: "👹", name: "Brand-man")
     }
 }
