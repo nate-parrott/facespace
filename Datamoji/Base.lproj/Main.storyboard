@@ -63,6 +63,7 @@
                         <viewLayoutGuide key="safeArea" id="6nc-OV-2cF"/>
                     </view>
                     <connections>
+                        <outlet property="filterPicker" destination="IHa-oU-oa4" id="ZQ8-4W-Oum"/>
                         <outlet property="sceneView" destination="Bah-aw-lYE" id="ixj-NT-yhu"/>
                         <outlet property="view" destination="HRO-Co-tLh" id="9NU-Wh-bdC"/>
                     </connections>

@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet var blurView: UIView!
+    @IBOutlet var filterPicker: FilterPicker!
+    private let workQueue = DispatchQueue(label: "workQueue") // serial queue by default
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         sceneView.scene.physicsWorld.speed = 1
+        
+        sceneView.scene.rootNode.addChildNode(sceneNodeContainer)
+        
+        filterPicker.focusPicker.onChange = {
+            [weak self] in
+            guard let s = self else { return }
+            s.faceFilterType = FaceFilter.all[s.filterPicker.focusPicker.selectedIndex]
+        }
+    }
+    
+    func updateFilter() {
+        faceFilterType = FaceFilter.all[filterPicker.focusPicker.selectedIndex]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +56,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        if faceFilterType == nil {
+            faceFilterType = FaceFilter.all.first!
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,26 +68,63 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
+    // MARK: Filter picking and node containment
+    
+    let sceneNodeContainer = SCNNode()
+    var sceneNode: SCNNode? {
+        didSet(old) {
+            old?.removeFromParentNode()
+            if let n = sceneNode {sceneNodeContainer.addChildNode(n)  }
+        }
+    }
+    let anchorNodeContainer = SCNNode()
+    var anchorNode: SCNNode? {
+        didSet(old) {
+            old?.removeFromParentNode()
+            if let a = anchorNode { anchorNodeContainer.addChildNode(a) }
+        }
+    }
+    
+    var faceFilterType: FaceFilter.Type! {
+        didSet(old) {
+            if faceFilterType != old {
+                workQueue.async {
+                    // clean up the old face filter:
+                    self.faceFilter?.stop()
+                    
+                    // do it:
+                    self.anchorNode = SCNNode()
+                    self.sceneNode = SCNNode()
+                    self.faceFilter = self.faceFilterType.init(anchorNode: self.anchorNode!, sceneNode: self.sceneNode!, sceneView: self.sceneView)
+                }
+            }
+        }
+    }
+    
+    var faceFilter: FaceFilter! {
+        didSet {
+            faceFilter.setup()
+            faceFilter.configureCamera(sceneView.pointOfView!.camera!)
+            faceFilter.show()
+            _initializedFaceFilter = faceFilter
+        }
+    }
+    private var _initializedFaceFilter: FaceFilter!
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if let faceAnchor = anchor as? ARFaceAnchor {
-            faceFilter = ToiletFilter(anchor: faceAnchor, anchorNode: node, sceneNode: sceneView.scene.rootNode, sceneView: sceneView)
-            faceFilter!.setup()
-            faceFilter!.configureCamera(sceneView.pointOfView!.camera!)
-            faceFilter!.show()
+        if (anchor as? ARFaceAnchor) != nil {
+            node.addChildNode(anchorNodeContainer)
         }
     }
-    
-    var faceFilter: FaceFilter?
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         if let faceAnchor = anchor as? ARFaceAnchor {
-            faceFilter?.update(anchor: faceAnchor)
+            _initializedFaceFilter?.update(anchor: faceAnchor)
         }
     }
-    
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

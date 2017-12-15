@@ -12,13 +12,11 @@ import SceneKit
 import CoreImage
 
 class FaceFilter {
-    init(anchor: ARFaceAnchor, anchorNode: SCNNode, sceneNode: SCNNode, sceneView: ARSCNView) {
-        self.anchor = anchor
+    required init(anchorNode: SCNNode, sceneNode: SCNNode, sceneView: ARSCNView) {
         self.anchorNode = anchorNode
         self.sceneNode = sceneNode
         self.sceneView = sceneView
     }
-    let anchor: ARFaceAnchor
     let anchorNode: SCNNode
     let sceneNode: SCNNode
     weak var sceneView: ARSCNView!
@@ -46,6 +44,10 @@ class FaceFilter {
     
     class var info: Info {
         return Info(emoji: "❓", name: "Filter")
+    }
+    
+    func stop() {
+        
     }
 }
 

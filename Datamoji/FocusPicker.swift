@@ -9,6 +9,10 @@ class FocusPicker : UIView, UIScrollViewDelegate {
         }
     }
     let centerButton = UIButton()
+    var selectedIndex: Int {
+        return _selectedIndex
+    }
+    var onChange: (() -> ())?
     // MARK: Internal views
     let scrollView = UIScrollView()
     let scrollButtonsContainer = UIView()
@@ -107,6 +111,12 @@ class FocusPicker : UIView, UIScrollViewDelegate {
     }
     
     // MARK: Scrolling
+    private var _selectedIndex: Int = 0 {
+        didSet {
+            if let cb = onChange { cb() }
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         focusMirrorView.transform = CGAffineTransform(translationX: -scrollView.contentOffset.x, y: 0)
         updateCenterButtonPos()
@@ -117,12 +127,17 @@ class FocusPicker : UIView, UIScrollViewDelegate {
         targetContentOffset.pointee = CGPoint(x: round(x / realViewWidth) * realViewWidth, y: targetContentOffset.pointee.y)
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        _selectedIndex = Int(round(scrollView.contentOffset.x / realViewWidth))
+    }
+    
     @objc func tappedOnButton(tapRec: UITapGestureRecognizer) {
         for view in views {
             if view.point(inside: tapRec.location(in: view), with: nil) {
                 // scroll to this view:
                 let offset = view.center.x - realViewWidth / 2 - focusedViewOffsetX
                 scrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+                _selectedIndex = views.index(of: view)!
             }
         }
     }
