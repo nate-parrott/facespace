@@ -21,6 +21,10 @@ class CharacterFilter : FaceFilter {
     func getCharacter() -> Character! {
         return nil
     }
+    
+    override var sceneBackground: Any? {
+        return UIColor.black
+    }
 }
 
 class SkullFilter : CharacterFilter {

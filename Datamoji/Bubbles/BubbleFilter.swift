@@ -50,7 +50,7 @@ class BubbleFilter : FaceFilter {
         //        vortexNode.physicsField = vortex
         //        vortex.categoryBitMask = attractedBitMask
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.loop()
         }
         

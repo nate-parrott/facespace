@@ -15,6 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var filterPicker: FilterPicker!
     private let workQueue = DispatchQueue(label: "workQueue") // serial queue by default
+    private var sceneBgForCamera: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if faceFilterType == nil {
             faceFilterType = FaceFilter.all.first!
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.sceneBgForCamera = self.sceneView.scene.background.contents
         }
     }
     
@@ -107,6 +112,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             faceFilter.setup()
             faceFilter.configureCamera(sceneView.pointOfView!.camera!)
             faceFilter.show()
+            sceneView.scene.background.contents = faceFilter.sceneBackground ?? sceneBgForCamera
             _initializedFaceFilter = faceFilter
         }
     }

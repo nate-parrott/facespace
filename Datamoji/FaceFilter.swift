@@ -49,6 +49,10 @@ class FaceFilter {
     func stop() {
         
     }
+    
+    var sceneBackground: Any? {
+        return nil
+    }
 }
 
 extension FaceFilter {
