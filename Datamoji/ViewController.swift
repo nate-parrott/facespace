@@ -16,6 +16,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var filterPicker: FilterPicker!
     private let workQueue = DispatchQueue(label: "workQueue") // serial queue by default
     private var sceneBgForCamera: Any?
+    let defaultEnvironment = UIImage(named: "env.jpg")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a new scene
         let scene = SCNScene()
         sceneView.automaticallyUpdatesLighting = true
-        scene.lightingEnvironment.contents = UIImage(named: "env.jpg")!
+        scene.lightingEnvironment.contents = defaultEnvironment
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -113,6 +114,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             faceFilter.configureCamera(sceneView.pointOfView!.camera!)
             faceFilter.show()
             sceneView.scene.background.contents = faceFilter.sceneBackground ?? sceneBgForCamera
+            sceneView.scene.lightingEnvironment.contents = faceFilter.lightingEnvironment ?? defaultEnvironment
             _initializedFaceFilter = faceFilter
         }
     }

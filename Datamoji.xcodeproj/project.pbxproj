@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		35BDDB031FE22F70004484C1 /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BDDB021FE22F70004484C1 /* FilterPicker.swift */; };
 		35BDDB051FE2404C004484C1 /* FocusPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BDDB041FE2404C004484C1 /* FocusPicker.swift */; };
+		35C52CB91FE38A520079AF96 /* MetalFaceFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C52CB81FE38A520079AF96 /* MetalFaceFilter.swift */; };
+		35C52CBB1FE38AEB0079AF96 /* scarybg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35C52CBA1FE38AEB0079AF96 /* scarybg.jpg */; };
+		35C52CBD1FE38BCD0079AF96 /* rock-normal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35C52CBC1FE38BCD0079AF96 /* rock-normal.jpg */; };
+		35C52CBF1FE38CC00079AF96 /* scarybg-bright.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35C52CBE1FE38CC00079AF96 /* scarybg-bright.jpg */; };
 		35D310791FDE01920025721A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D310781FDE01920025721A /* AppDelegate.swift */; };
 		35D3107B1FDE01920025721A /* brandman.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D3107A1FDE01920025721A /* brandman.scnassets */; };
 		35D3107D1FDE01920025721A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3107C1FDE01920025721A /* ViewController.swift */; };
@@ -42,6 +46,10 @@
 /* Begin PBXFileReference section */
 		35BDDB021FE22F70004484C1 /* FilterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPicker.swift; sourceTree = "<group>"; };
 		35BDDB041FE2404C004484C1 /* FocusPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusPicker.swift; sourceTree = "<group>"; };
+		35C52CB81FE38A520079AF96 /* MetalFaceFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalFaceFilter.swift; sourceTree = "<group>"; };
+		35C52CBA1FE38AEB0079AF96 /* scarybg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scarybg.jpg; sourceTree = "<group>"; };
+		35C52CBC1FE38BCD0079AF96 /* rock-normal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rock-normal.jpg"; sourceTree = "<group>"; };
+		35C52CBE1FE38CC00079AF96 /* scarybg-bright.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "scarybg-bright.jpg"; sourceTree = "<group>"; };
 		35D310751FDE01920025721A /* Datamoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Datamoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D310781FDE01920025721A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35D3107A1FDE01920025721A /* brandman.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = brandman.scnassets; sourceTree = "<group>"; };
@@ -85,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35C52CB71FE38A440079AF96 /* MetalFace */ = {
+			isa = PBXGroup;
+			children = (
+				35C52CB81FE38A520079AF96 /* MetalFaceFilter.swift */,
+				35C52CBC1FE38BCD0079AF96 /* rock-normal.jpg */,
+				35C52CBA1FE38AEB0079AF96 /* scarybg.jpg */,
+				35C52CBE1FE38CC00079AF96 /* scarybg-bright.jpg */,
+			);
+			path = MetalFace;
+			sourceTree = "<group>";
+		};
 		35D3106C1FDE01920025721A = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				35D3108C1FDE024C0025721A /* FaceFilter.swift */,
+				35C52CB71FE38A440079AF96 /* MetalFace */,
 				35D311401FE0CEC90025721A /* CharacterFilters */,
 				35D3113B1FE0CDA20025721A /* Data */,
 				35D311321FE0C6080025721A /* BigSpender */,
@@ -291,9 +311,12 @@
 				35D310EC1FDF696D0025721A /* face.png in Resources */,
 				35D310E21FDF54720025721A /* base_color_grading.png in Resources */,
 				35D3108F1FDE17B30025721A /* env.jpg in Resources */,
+				35C52CBF1FE38CC00079AF96 /* scarybg-bright.jpg in Resources */,
 				35D3113F1FE0CDBF0025721A /* data.scnassets in Resources */,
 				35D310F21FDF789B0025721A /* tm2.png in Resources */,
+				35C52CBB1FE38AEB0079AF96 /* scarybg.jpg in Resources */,
 				35D311471FE0CF7D0025721A /* characters.scnassets in Resources */,
+				35C52CBD1FE38BCD0079AF96 /* rock-normal.jpg in Resources */,
 				35D311391FE0C6E70025721A /* bigspender.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +338,7 @@
 				35D310791FDE01920025721A /* AppDelegate.swift in Sources */,
 				35D3113D1FE0CDAC0025721A /* DataFilter.swift in Sources */,
 				35D311451FE0CF320025721A /* CharacterFilter.swift in Sources */,
+				35C52CB91FE38A520079AF96 /* MetalFaceFilter.swift in Sources */,
 				35D311431FE0CEF20025721A /* Character.swift in Sources */,
 				35D3108D1FDE024C0025721A /* FaceFilter.swift in Sources */,
 				35D311291FE0C2270025721A /* SceneKitExtensions.swift in Sources */,

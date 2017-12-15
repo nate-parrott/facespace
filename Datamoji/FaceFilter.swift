@@ -53,6 +53,10 @@ class FaceFilter {
     var sceneBackground: Any? {
         return nil
     }
+    
+    var lightingEnvironment: Any? {
+        return nil
+    }
 }
 
 extension FaceFilter {
@@ -60,6 +64,7 @@ extension FaceFilter {
         BigSpenderFilter.self,
         DataFilter.self,
         BubbleFilter.self,
+        MetalFaceFilter.self,
         BrandmanFilter.self,
         SkullFilter.self,
         ToiletFilter.self
